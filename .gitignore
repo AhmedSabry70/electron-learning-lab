@@ -1,0 +1,189 @@
+# ===============================================
+# Project Dependencies & Runtime
+# ===============================================
+node_modules/
+.pnp
+.pnp.js
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-store/
+
+# ===============================================
+# Build Outputs
+# =========================================------
+# Typescript
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# React
+.next/
+.gatsby-build/
+public/static/_build-manifest.json
+public/static/_ssg-manifest.json
+
+# Electron
+release/
+app-update.yml
+*.dmg
+*.exe
+*.pak
+*.blockmap
+*.AppImage
+*.snap
+*.deb
+*.rpm
+*.msi
+*.zip
+
+# ===============================================
+# Environment & Configuration
+# =========================================------
+.env*.local
+.env
+.env.development
+.env.test
+.env.production
+.env.staging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.env
+.firebase/
+.firebaserc
+
+# ===============================================
+# Testing & Coverage
+# ===============================================
+coverage/
+.nyc_output/
+*.lcov
+jest-cache/
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# ===============================================
+# Editors & IDEs
+# ===============================================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+~$*
+
+# ===============================================
+# OS Generated Files
+# ===============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===============================================
+# Logs & Temporary Files
+# ===============================================
+*.log*
+logs/
+*.pid
+*.pid.lock
+*.seed
+*.seed.lock
+*.sock
+*.sock.lock
+*.tmp
+*.temp
+dump.rdb
+tmp/
+temp/
+
+# ===============================================
+# Package Manager Specific
+# ===============================================
+# npm
+package-lock.json
+npm-shrinkwrap.json
+
+# Yarn 2+ (Zero-Installs)
+!.yarn/releases
+!.yarn/plugins
+.yarn/*
+!.yarnrc.yml
+
+# ===============================================
+# TypeScript & Linters
+# ===============================================
+.eslintcache
+.stylelintcache
+*.css.d.ts
+*.css.map
+
+# ===============================================
+# Electron Specific
+# ===============================================
+electron/dist/
+electron/temp/
+electron/node_modules/
+electron/package-lock.json
+/resources/
+!/resources/icons/
+ElectronLogs/
+/tmp/electron-*
+
+# ===============================================
+# Express.js/Node.js Specific
+# ===============================================
+uploads/
+storage/
+*.pem
+*.crt
+*.key
+
+# ===============================================
+# React Specific (Create React App)
+# ===============================================
+# Only include if using CRA
+.cache/
+.parcel-cache/
+reportWebVitals.ts
+service-worker.js
+*.webmanifest
+
+
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+dist-react
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
