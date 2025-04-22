@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "description": "_A sandbox for mastering cross-platform desktop app development with Electron.js_",
   "type": "module",
-  "main": "src/electron/main",
+  "main": "dist-electron/main",
   "scripts": {
     "dev": "vite",
     "dev:electron": "electron .",
+    "transpile:electron": "tsc -p src/electron/tsconfig.json",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
