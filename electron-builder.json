@@ -1,0 +1,66 @@
+{
+    "appId": "com.ahmedsabry.electronapp",
+    "productName": "MyElectronApp",
+    "copyright": "Copyright © 2025 AhmedSabry",
+    "icon": "./Papirus-Team-Papirus-Apps-Pingus-icon.svg",
+    "directories": {
+        "output": "release",
+        "buildResources": "public"
+    },
+    "files": [
+        "dist-electron/**/*",
+        "dist-react/**/*",
+        "package.json"
+    ],
+    "extraMetadata": {
+        "main": "dist-electron/main.js"
+    },
+    "asar": true,
+    "asarUnpack": [
+        "**/*.node"
+    ],
+    "publish": {
+        "provider": "github",
+        "owner": "AhmedSabry70",
+        "repo": "electron-learning-lab.git"
+    },
+    "win": {
+        "target": [
+            {
+                "target": "nsis",
+                "arch": [
+                    "x64",
+                    "ia32"
+                ]
+            }
+        ]
+    },
+    "nsis": {
+        "oneClick": false,
+        "perMachine": true,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true,
+        "shortcutName": "MyElectronApp"
+    },
+    "mac": {
+        "target": [
+            "dmg",
+            "zip"
+        ],
+        "category": "public.app-category.utilities",
+        "hardenedRuntime": true,
+        "gatekeeperAssess": false
+    },
+    "linux": {
+        "target": [
+            "AppImage",
+            "deb",
+            "snap"
+        ],
+        "maintainer": "Your Name <you@example.com>",
+        "category": "Utility"
+    },
+    "npmRebuild": false,
+    "nodeGypRebuild": false
+}

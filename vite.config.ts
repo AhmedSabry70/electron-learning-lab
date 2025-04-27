@@ -7,5 +7,10 @@ export default defineConfig({
   base: "./",
   build: {
     outDir: "dist-react",
+    emptyOutDir: true, // Clean output before build
+  },
+  server: {
+    port: 5123, // Dev server port
+    strictPort: true,
   },
 });
