@@ -7,6 +7,9 @@
         "output": "release",
         "buildResources": "public"
     },
+    "extraResources": [
+        "dist-electron/preload.cjs"
+    ],
     "files": [
         "dist-electron/**/*",
         "dist-react/**/*",

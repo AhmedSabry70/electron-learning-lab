@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 
 function App() {
   const [count, setCount] = useState(0);
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    window.myAPI.subscribesStatistics((stats) => console.log({ stats }));
+  }, []);
 
   return (
     <>

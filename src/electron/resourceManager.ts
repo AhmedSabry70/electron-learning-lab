@@ -1,3 +1,4 @@
+import { BrowserWindow } from "electron";
 import fs from "fs";
 import os from "os";
 
@@ -241,4 +242,52 @@ export function startSystemHealthMonitoring(intervalMs: number = 2000) {
   }, intervalMs);
 
   return interval;
+}
+
+export function pollSystemHealthMonitoring(mainWindow: BrowserWindow) {
+  const interval = setInterval(async () => {
+    try {
+      const {
+        memoryUsage,
+        cpuUsage,
+        timestamp,
+        totalStorage,
+        cpuModel,
+        cpuTemp,
+        diskLayout,
+        networkStats,
+      } = await getSystemHealthReport();
+
+      // Get process-specific usage (using current PID as example)
+      const processUsage = await getProcessCpuUsage(process.pid);
+
+      mainWindow.webContents.send("statistics", {
+        memoryUsage,
+        cpuUsage,
+        timestamp,
+        totalStorage,
+        cpuModel,
+        cpuTemp,
+        diskLayout,
+        networkStats,
+        processUsage,
+      });
+    } catch (error) {
+      console.error("Monitoring error:", error);
+      clearInterval(interval);
+    }
+  }, 2000);
+
+  return interval;
+}
+
+export function getStaticData() {
+  const totalStorage = getStorageDate().total;
+  const cpuModel = os.cpus()[0].model;
+
+  return {
+    timestamp: new Date().toISOString(),
+    totalStorage,
+    cpuModel,
+  };
 }
