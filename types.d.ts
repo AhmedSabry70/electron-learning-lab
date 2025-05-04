@@ -21,6 +21,12 @@ type EventPayloadMapping = {
   statistics: Statistics;
   getStaticData: StaticData;
 };
+interface CpuLoad {
+  currentLoad: number;
+  cpus: Array<{ load: number }>;
+}
+
+type UnsubscribeFunction = () => void;
 interface Window {
   myAPI: {
     subscribeStatistics: (
@@ -28,9 +34,4 @@ interface Window {
     ) => UnsubscribeFunction;
     getStaticData: () => Promise<StaticData>;
   };
-}
-
-interface CpuLoad {
-  currentLoad: number;
-  cpus: Array<{ load: number }>;
 }

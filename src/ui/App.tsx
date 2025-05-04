@@ -5,7 +5,10 @@ import reactLogo from "./assets/react.svg";
 function App() {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    window.myAPI.subscribeStatistics((stats) => console.log({ stats }));
+    const unsubscribe = window.myAPI.subscribeStatistics((stats) =>
+      console.log({ stats })
+    );
+    return unsubscribe;
   }, []);
 
   return (
