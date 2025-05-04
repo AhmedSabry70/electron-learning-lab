@@ -5,11 +5,8 @@ import os from "os";
 import si from "systeminformation";
 
 import type { Systeminformation } from "systeminformation";
+import { ipcWebContentsSend } from "./util.js";
 // Define TypeScript interfaces for the data we care about
-interface CpuLoad {
-  currentLoad: number;
-  cpus: Array<{ load: number }>;
-}
 
 // interface ProcessUsage
 //   extends Partial<Systeminformation.ProcessesProcessLoadData> {
@@ -259,9 +256,10 @@ export function pollSystemHealthMonitoring(mainWindow: BrowserWindow) {
       } = await getSystemHealthReport();
 
       // Get process-specific usage (using current PID as example)
-      const processUsage = await getProcessCpuUsage(process.pid);
+      // const processUsage = await getProcessCpuUsage(process.pid);
 
-      mainWindow.webContents.send("statistics", {
+      const storageUsage = getStorageDate().usage;
+      ipcWebContentsSend("statistics", mainWindow.webContents, {
         memoryUsage,
         cpuUsage,
         timestamp,
@@ -270,7 +268,8 @@ export function pollSystemHealthMonitoring(mainWindow: BrowserWindow) {
         cpuTemp,
         diskLayout,
         networkStats,
-        processUsage,
+
+        storageUsage,
       });
     } catch (error) {
       console.error("Monitoring error:", error);

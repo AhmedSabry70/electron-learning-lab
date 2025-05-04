@@ -1,12 +1,10 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow } from "electron";
 import path from "path";
 import {
   getStaticData,
-  getSystemHealthReport,
   pollSystemHealthMonitoring,
-  startSystemHealthMonitoring,
 } from "./resourceManager.js";
-import { getPreloadPath, isDev } from "./util.js";
+import { getPreloadPath, ipcMainHandler, isDev } from "./util.js";
 
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
@@ -22,11 +20,9 @@ app.on("ready", () => {
     mainWindow.loadFile(path.join(app.getAppPath(), "/dist-react/index.html"));
   }
 
-  getSystemHealthReport();
-  startSystemHealthMonitoring();
   pollSystemHealthMonitoring(mainWindow);
 
-  ipcMain.handle("getStaticData", () => {
+  ipcMainHandler("getStaticData", () => {
     return getStaticData();
   });
 });

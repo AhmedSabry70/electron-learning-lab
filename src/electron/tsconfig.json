@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "types": [
+      "../../types"
+    ],
     "target": "ESNext",
     "module": "NodeNext",
     "skipLibCheck": true,
@@ -9,6 +12,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "outDir": "../../dist-electron"
-  }
+    "outDir": "../../dist-electron",
+  },
 }

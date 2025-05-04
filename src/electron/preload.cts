@@ -1,10 +1,23 @@
 import electron from "electron";
 
 electron.contextBridge.exposeInMainWorld("myAPI", {
-  subscribesStatistics: (cb: (statistics: unknown) => void) => {
-    electron.ipcRenderer.on("statistics", (_, stats) => {
+  subscribeStatistics: (cb) => {
+    ipcOn("statistics", (stats) => {
       cb(stats);
     });
   },
-  getStaticData: () => electron.ipcRenderer.invoke("getStaticData"),
-});
+  getStaticData: () => ipcInvoke("getStaticData"),
+} satisfies Window["myAPI"]);
+
+function ipcInvoke<key extends keyof EventPayloadMapping>(
+  key: key
+): Promise<EventPayloadMapping[key]> {
+  return electron.ipcRenderer.invoke(key);
+}
+
+function ipcOn<key extends keyof EventPayloadMapping>(
+  key: key,
+  callback: (payload: EventPayloadMapping[key]) => void
+) {
+  electron.ipcRenderer.on(key, (_, payload) => callback(payload));
+}
