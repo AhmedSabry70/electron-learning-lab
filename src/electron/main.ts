@@ -1,10 +1,9 @@
 import { app, BrowserWindow } from "electron";
-import path from "path";
 import {
   getStaticData,
   pollSystemHealthMonitoring,
 } from "./resourceManager.js";
-import { getPreloadPath, ipcMainHandler, isDev } from "./util.js";
+import { getPreloadPath, getUIPath, ipcMainHandler, isDev } from "./util.js";
 
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
@@ -17,7 +16,7 @@ app.on("ready", () => {
   } else {
     // Production mode
     console.log("App is running in production");
-    mainWindow.loadFile(path.join(app.getAppPath(), "/dist-react/index.html"));
+    mainWindow.loadFile(getUIPath());
   }
 
   pollSystemHealthMonitoring(mainWindow);
